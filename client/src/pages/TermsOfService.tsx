@@ -3,7 +3,16 @@
  * Términos y condiciones de uso del sitio
  */
 
+import { useSEO } from "@/hooks/useSEO";
+
 export default function TermsOfService() {
+  useSEO({
+    title: "Términos de Servicio",
+    description:
+      "Términos y condiciones de uso de finiquito.xyz. Herramienta gratuita para calcular finiquito en México según la Ley Federal del Trabajo.",
+    canonical: "/terms",
+  });
+
   return (
     <div className="w-full min-h-screen bg-white">
       {/* Hero Section */}

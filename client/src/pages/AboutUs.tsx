@@ -5,8 +5,16 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function AboutUs() {
+  useSEO({
+    title: "Sobre Nosotros — Calculadora de Finiquito México",
+    description:
+      "Conoce la misión de finiquito.xyz: democratizar el acceso a información precisa sobre finiquitos laborales en México, gratis y conforme a la Ley Federal del Trabajo.",
+    canonical: "/about",
+  });
+
   return (
     <div className="w-full min-h-screen bg-white">
       {/* Hero Section */}

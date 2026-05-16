@@ -3,7 +3,16 @@
  * Información sobre cómo protegemos los datos del usuario
  */
 
+import { useSEO } from "@/hooks/useSEO";
+
 export default function PrivacyPolicy() {
+  useSEO({
+    title: "Política de Privacidad",
+    description:
+      "Conoce cómo protegemos tu información en finiquito.xyz. No almacenamos datos personales. Tu privacidad es nuestra prioridad.",
+    canonical: "/privacy",
+  });
+
   return (
     <div className="w-full min-h-screen bg-white">
       {/* Hero Section */}

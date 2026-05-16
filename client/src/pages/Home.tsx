@@ -12,11 +12,19 @@
 import { useState } from "react";
 import CalculadoraFiniquito from "@/components/CalculadoraFiniquito";
 import AdSense from "@/components/AdSense";
+import { useSEO } from "@/hooks/useSEO";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ChevronDown, CheckCircle, HelpCircle } from "lucide-react";
 
 export default function Home() {
+  useSEO({
+    title: "Calculadora de Finiquito México 2026 — Cálculo Rápido y Preciso",
+    description:
+      "Calcula tu finiquito en México según la Ley Federal del Trabajo. Rápido, preciso y 100% gratuito. Incluye aguinaldo, vacaciones, prima vacacional e indemnización por despido.",
+    canonical: "/",
+  });
+
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   const faqItems = [
