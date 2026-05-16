@@ -19,6 +19,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AlertCircle, Download, Share2, Info } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import AdSense from "@/components/AdSense";
 import {
   calcularFiniquito,
   formatearMoneda,
@@ -253,11 +254,8 @@ export default function CalculadoraFiniquito() {
             </CardContent>
           </Card>
 
-          {/* Espacio para AdSense */}
-          <div className="bg-gray-100 rounded-lg p-4 text-center text-gray-500 text-sm">
-            {/* Aquí irá el anuncio de AdSense */}
-            Espacio publicitario
-          </div>
+          {/* Anuncio AdSense — lado izquierdo */}
+          <AdSense slot="SLOT_IZQUIERDO" format="rectangle" className="my-2" />
         </div>
 
         {/* Columna 2: Resultados */}
@@ -354,10 +352,8 @@ export default function CalculadoraFiniquito() {
                 </TabsContent>
               </Tabs>
 
-              {/* Espacio para AdSense */}
-              <div className="bg-gray-100 rounded-lg p-4 text-center text-gray-500 text-sm">
-                Espacio publicitario
-              </div>
+              {/* Anuncio AdSense — lado derecho (debajo del desglose) */}
+              <AdSense slot="SLOT_DERECHO" format="rectangle" className="my-2" />
             </>
           ) : (
             <Card className="border-2 border-dashed">

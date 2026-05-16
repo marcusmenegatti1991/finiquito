@@ -11,6 +11,7 @@
 
 import { useState } from "react";
 import CalculadoraFiniquito from "@/components/CalculadoraFiniquito";
+import AdSense from "@/components/AdSense";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ChevronDown, CheckCircle, HelpCircle } from "lucide-react";
@@ -90,8 +91,8 @@ export default function Home() {
       <section className="relative w-full">
         <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden">
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663480693643/5ABicyTNyQZVyCbrczG7hB/hero-finiquito-4CbxBSTSxzwaDdZpHgBfFP.webp"
-            alt="Calculadora de Finiquito"
+            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&q=80&auto=format&fit=crop"
+            alt="Calculadora de Finiquito México - trabajador revisando documentos laborales"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/30"></div>
@@ -123,6 +124,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Anuncio AdSense — Banner entre beneficios y calculadora */}
+      <div className="max-w-5xl mx-auto px-4 py-4">
+        <AdSense slot="SLOT_BANNER_HOME" format="horizontal" />
+      </div>
 
       {/* Calculadora Principal */}
       <section className="py-16 bg-white">
