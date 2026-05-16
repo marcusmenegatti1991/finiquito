@@ -10,7 +10,7 @@
  * - Espacios para AdSense
  */
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -31,11 +31,62 @@ import {
 export default function CalculadoraFiniquito() {
   // Estado del formulario
   const [salarioMensual, setSalarioMensual] = useState<number>(15000);
+  const [salarioInput, setSalarioInput] = useState<string>("15,000");
   const [fechaIngreso, setFechaIngreso] = useState<string>("2020-01-15");
   const [fechaTerminacion, setFechaTerminacion] = useState<string>("2026-05-15");
   const [diasVacaciones, setDiasVacaciones] = useState<number>(14);
   const [diasNoPagados, setDiasNoPagados] = useState<number>(5);
   const [esLiquidacion, setEsLiquidacion] = useState<boolean>(false);
+  const [mensajeCompartir, setMensajeCompartir] = useState<string>("");
+
+  // Leer parámetros de URL para compartir
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("s")) {
+      const num = parseFloat(params.get("s")!);
+      setSalarioMensual(num);
+      setSalarioInput(new Intl.NumberFormat("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(num));
+    }
+    if (params.get("i")) setFechaIngreso(params.get("i")!);
+    if (params.get("t")) setFechaTerminacion(params.get("t")!);
+    if (params.get("v")) setDiasVacaciones(parseInt(params.get("v")!));
+    if (params.get("n")) setDiasNoPagados(parseInt(params.get("n")!));
+    if (params.get("l")) setEsLiquidacion(params.get("l") === "1");
+  }, []);
+
+  // Manejar cambio en el campo de salario
+  const handleSalarioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let raw = e.target.value.replace(/[^0-9.]/g, "");
+    // Evitar ceros al inicio (excepto "0.")
+    raw = raw.replace(/^0+(?=\d)/, "");
+    // Máximo un punto decimal
+    const partes = raw.split(".");
+    if (partes.length > 2) raw = partes[0] + "." + partes.slice(1).join("");
+
+    const num = parseFloat(raw) || 0;
+    setSalarioMensual(num);
+
+    // Formatear miles mientras se escribe
+    if (raw === "" || raw === ".") {
+      setSalarioInput(raw);
+    } else if (raw.endsWith(".") || /\.\d*$/.test(raw)) {
+      // Si está escribiendo decimales, no reformatear
+      const intPart = parseInt(partes[0] || "0").toLocaleString("es-MX");
+      setSalarioInput(partes.length > 1 ? `${intPart}.${partes[1]}` : raw);
+    } else {
+      setSalarioInput(parseInt(raw).toLocaleString("es-MX"));
+    }
+  };
+
+  const handleSalarioBlur = () => {
+    setSalarioInput(
+      new Intl.NumberFormat("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(salarioMensual)
+    );
+  };
+
+  const handleSalarioFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    e.target.select();
+  };
 
   // Cálculo del finiquito
   const resultado = useMemo(() => {
@@ -56,23 +107,114 @@ export default function CalculadoraFiniquito() {
     }
   }, [salarioMensual, fechaIngreso, fechaTerminacion, diasVacaciones, diasNoPagados, esLiquidacion]);
 
-  // Descargar como PDF (simulado)
+  // Descargar como PDF
   const descargarPDF = () => {
     if (!resultado) return;
-    alert("Funcionalidad de descarga PDF próximamente disponible");
+    const win = window.open("", "_blank");
+    if (!win) return;
+
+    const tipo = esLiquidacion ? "Liquidación por despido injustificado" : "Finiquito (renuncia / despido justificado)";
+    const conceptosHTML = resultado.desglose.conceptos.map(c => `
+      <tr>
+        <td style="padding:10px 8px; border-bottom:1px solid #e5e7eb;">
+          <strong>${c.nombre}</strong><br>
+          <span style="font-size:12px; color:#6b7280;">${c.descripcion}</span><br>
+          ${c.formula ? `<span style="font-size:11px; color:#7c3aed; font-family:monospace;">${c.formula}</span>` : ""}
+        </td>
+        <td style="padding:10px 8px; border-bottom:1px solid #e5e7eb; text-align:right; font-weight:bold; color:#1d4ed8; white-space:nowrap;">
+          ${formatearMoneda(c.monto)}
+        </td>
+      </tr>
+    `).join("");
+
+    win.document.write(`<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Finiquito - ${formatearMoneda(resultado.totalFiniquito)}</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #111827; padding: 40px; max-width: 700px; margin: 0 auto; }
+    .header { background: linear-gradient(135deg, #1d4ed8, #7c3aed); color: white; padding: 32px; border-radius: 12px; margin-bottom: 32px; }
+    .header h1 { font-size: 22px; margin-bottom: 4px; }
+    .header p { font-size: 13px; opacity: 0.85; }
+    .total-box { background: #eff6ff; border: 2px solid #1d4ed8; border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 32px; }
+    .total-box .label { font-size: 12px; text-transform: uppercase; color: #6b7280; letter-spacing: 1px; }
+    .total-box .amount { font-size: 42px; font-weight: 900; color: #1d4ed8; margin: 8px 0; }
+    .section-title { font-size: 15px; font-weight: bold; color: #374151; margin-bottom: 12px; border-bottom: 2px solid #e5e7eb; padding-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 32px; font-size: 13px; }
+    .info-item { background: #f9fafb; padding: 10px 12px; border-radius: 6px; }
+    .info-item .key { color: #6b7280; margin-bottom: 2px; }
+    .info-item .val { font-weight: bold; color: #111827; }
+    .footer { font-size: 11px; color: #9ca3af; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 16px; }
+    @media print { body { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>💼 Calculadora de Finiquito México</h1>
+    <p>Cálculo basado en la Ley Federal del Trabajo • finiquito.xyz</p>
+  </div>
+
+  <div class="total-box">
+    <div class="label">Total de Finiquito</div>
+    <div class="amount">${formatearMoneda(resultado.totalFiniquito)}</div>
+    <div style="font-size:13px; color:#374151;">${tipo}</div>
+  </div>
+
+  <div class="section-title">Información Laboral</div>
+  <div class="info-grid">
+    <div class="info-item"><div class="key">Salario Mensual</div><div class="val">${formatearMoneda(salarioMensual)}</div></div>
+    <div class="info-item"><div class="key">Salario Diario</div><div class="val">${formatearMoneda(resultado.salarioDiario)}</div></div>
+    <div class="info-item"><div class="key">Fecha de Ingreso</div><div class="val">${formatearFecha(new Date(fechaIngreso))}</div></div>
+    <div class="info-item"><div class="key">Fecha de Terminación</div><div class="val">${formatearFecha(new Date(fechaTerminacion))}</div></div>
+    <div class="info-item"><div class="key">Días No Pagados</div><div class="val">${diasNoPagados} días</div></div>
+    <div class="info-item"><div class="key">Días de Vacaciones</div><div class="val">${diasVacaciones} días</div></div>
+  </div>
+
+  <div class="section-title">Desglose del Finiquito</div>
+  <table>
+    <tbody>${conceptosHTML}</tbody>
+    <tfoot>
+      <tr style="background:#eff6ff;">
+        <td style="padding:14px 8px; font-size:16px; font-weight:900; color:#1d4ed8;">TOTAL</td>
+        <td style="padding:14px 8px; font-size:20px; font-weight:900; color:#1d4ed8; text-align:right;">${formatearMoneda(resultado.totalFiniquito)}</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="footer">
+    Este documento es una estimación basada en la Ley Federal del Trabajo de México. No constituye asesoría legal.<br>
+    Generado en finiquito.xyz • ${new Date().toLocaleDateString("es-MX", { year: "numeric", month: "long", day: "numeric" })}
+  </div>
+
+  <script>window.onload = () => { window.print(); }<\/script>
+</body>
+</html>`);
+    win.document.close();
   };
 
-  // Compartir resultados
+  // Compartir resultados con enlace
   const compartirResultados = () => {
     if (!resultado) return;
-    const texto = `Mi finiquito es: ${formatearMoneda(resultado.totalFiniquito)} según la Ley Federal del Trabajo`;
-    if (navigator.share) {
-      navigator.share({
-        title: "Calculadora de Finiquito",
-        text: texto
+    const params = new URLSearchParams({
+      s: salarioMensual.toString(),
+      i: fechaIngreso,
+      t: fechaTerminacion,
+      v: diasVacaciones.toString(),
+      n: diasNoPagados.toString(),
+      l: esLiquidacion ? "1" : "0"
+    });
+    const url = `${window.location.origin}/?${params.toString()}`;
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(() => {
+        setMensajeCompartir("¡Enlace copiado!");
+        setTimeout(() => setMensajeCompartir(""), 3000);
       });
-    } else {
-      alert(texto);
+    } else if (navigator.share) {
+      navigator.share({ title: "Mi Finiquito", url });
     }
   };
 
@@ -124,11 +266,14 @@ export default function CalculadoraFiniquito() {
                   <span className="absolute left-3 top-3 text-gray-500">$</span>
                   <Input
                     id="salario"
-                    type="number"
-                    value={salarioMensual}
-                    onChange={(e) => setSalarioMensual(parseFloat(e.target.value) || 0)}
+                    type="text"
+                    inputMode="decimal"
+                    value={salarioInput}
+                    onChange={handleSalarioChange}
+                    onBlur={handleSalarioBlur}
+                    onFocus={handleSalarioFocus}
                     className="pl-7"
-                    placeholder="15000"
+                    placeholder="15,000.00"
                   />
                 </div>
               </div>
@@ -270,7 +415,7 @@ export default function CalculadoraFiniquito() {
                     <p className="text-5xl font-bold text-primary mb-4">
                       {formatearMoneda(resultado.totalFiniquito)}
                     </p>
-                    <div className="flex gap-2 justify-center">
+                    <div className="flex gap-2 justify-center flex-wrap">
                       <Button
                         onClick={descargarPDF}
                         variant="outline"
@@ -287,7 +432,7 @@ export default function CalculadoraFiniquito() {
                         className="gap-2"
                       >
                         <Share2 className="h-4 w-4" />
-                        Compartir
+                        {mensajeCompartir || "Compartir"}
                       </Button>
                     </div>
                   </div>
