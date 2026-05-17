@@ -64,26 +64,33 @@ export function calcularAnosServicio(fechaIngreso: Date, fechaTerminacion: Date)
 
 /**
  * Calcula aguinaldo proporcional
- * Mínimo legal: 15 días de salario
- * Fórmula: (15 ÷ 365) × Días Laborados en el Año × Salario Diario
+ * Mínimo legal: 15 días de salario (Art. 87 LFT)
+ * El aguinaldo se paga cada 20 de diciembre. En finiquito solo corresponde
+ * la parte del AÑO EN CURSO (desde el 1 de enero, o desde la fecha de ingreso
+ * si el trabajador entró ese mismo año).
+ * Fórmula: (15 ÷ 365) × Días Trabajados en el Año en Curso × Salario Diario
  */
 export function calcularAguinaldoProporcional(
   salarioDiario: number,
   fechaIngreso: Date,
   fechaTerminacion: Date
 ): number {
-  const diasLaborados = calcularDiasLaborados(fechaIngreso, fechaTerminacion);
-  const diasEnAnio = 365;
+  // Inicio del periodo: 1 enero del año de terminación (o fecha de ingreso si fue ese año)
+  const inicioAnio = new Date(fechaTerminacion.getFullYear(), 0, 1);
+  const inicioAguinaldo = fechaIngreso > inicioAnio ? fechaIngreso : inicioAnio;
+  const diasEnAnioActual = calcularDiasLaborados(inicioAguinaldo, fechaTerminacion);
+
   const diasAguinaldo = 15;
-  
-  return (diasAguinaldo / diasEnAnio) * diasLaborados * salarioDiario;
+  return (diasAguinaldo / 365) * diasEnAnioActual * salarioDiario;
 }
 
 /**
  * Calcula vacaciones proporcionales
- * Mínimo legal: 12 días (después de 1 año)
+ * Mínimo legal: 12 días después de 1 año (reforma "Vacaciones Dignas" 2023)
  * Incremento: 2 días por cada año subsecuente
- * Fórmula: (Días Asignados ÷ 365) × Días Laborados × Salario Diario
+ * Las vacaciones se acumulan por periodo aniversario (no por año calendario).
+ * En finiquito corresponden los días desde el ÚLTIMO ANIVERSARIO hasta la terminación.
+ * Fórmula: (Días Asignados ÷ 365) × Días desde Último Aniversario × Salario Diario
  */
 export function calcularVacacionesProporcionales(
   salarioDiario: number,
@@ -91,10 +98,29 @@ export function calcularVacacionesProporcionales(
   fechaIngreso: Date,
   fechaTerminacion: Date
 ): number {
-  const diasLaborados = calcularDiasLaborados(fechaIngreso, fechaTerminacion);
-  const diasEnAnio = 365;
-  
-  return (diasVacacionesCorrespondientes / diasEnAnio) * diasLaborados * salarioDiario;
+  const anioTerminacion = fechaTerminacion.getFullYear();
+
+  // Calcular el último aniversario laboral antes de la fecha de terminación
+  let ultimoAniversario = new Date(
+    anioTerminacion,
+    fechaIngreso.getMonth(),
+    fechaIngreso.getDate()
+  );
+
+  // Si el aniversario de este año aún no ha llegado, retroceder un año
+  if (ultimoAniversario > fechaTerminacion) {
+    ultimoAniversario = new Date(
+      anioTerminacion - 1,
+      fechaIngreso.getMonth(),
+      fechaIngreso.getDate()
+    );
+  }
+
+  // Si el trabajador entró después del último aniversario calculado, usar fecha de ingreso
+  const inicioVacaciones = fechaIngreso > ultimoAniversario ? fechaIngreso : ultimoAniversario;
+  const diasDesdeAniversario = calcularDiasLaborados(inicioVacaciones, fechaTerminacion);
+
+  return (diasVacacionesCorrespondientes / 365) * diasDesdeAniversario * salarioDiario;
 }
 
 /**
@@ -189,16 +215,16 @@ export function calcularFiniquito(input: FiniquitoInput): FiniquitoOutput {
     },
     {
       nombre: "Aguinaldo Proporcional",
-      descripcion: "Parte proporcional del aguinaldo anual",
+      descripcion: "Parte proporcional del aguinaldo del año en curso",
       monto: aguinaldoProporcional,
-      formula: "(15 ÷ 365) × Días Laborados × Salario Diario",
+      formula: "(15 ÷ 365) × Días Trabajados en el Año en Curso × Salario Diario",
       icono: "🎁"
     },
     {
       nombre: "Vacaciones Proporcionales",
-      descripcion: "Días de vacaciones no disfrutados",
+      descripcion: "Días de vacaciones desde el último aniversario laboral",
       monto: vacacionesProporcionales,
-      formula: "(Días Asignados ÷ 365) × Días Laborados × Salario Diario",
+      formula: "(Días Asignados ÷ 365) × Días desde Último Aniversario × Salario Diario",
       icono: "🏖️"
     },
     {

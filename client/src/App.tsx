@@ -8,6 +8,10 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import Blog from "./pages/blog/Blog";
+import ComoCalcularFiniquito from "./pages/blog/ComoCalcularFiniquito";
+import FiniquitoVsLiquidacion from "./pages/blog/FiniquitoVsLiquidacion";
+import VacacionesDignas from "./pages/blog/VacacionesDignas";
 
 
 function Router() {
@@ -17,6 +21,10 @@ function Router() {
       <Route path={"/about"} component={AboutUs} />
       <Route path={"/privacy"} component={PrivacyPolicy} />
       <Route path={"/terms"} component={TermsOfService} />
+      <Route path={"/blog"} component={Blog} />
+      <Route path={"/blog/como-calcular-finiquito"} component={ComoCalcularFiniquito} />
+      <Route path={"/blog/finiquito-vs-liquidacion"} component={FiniquitoVsLiquidacion} />
+      <Route path={"/blog/vacaciones-dignas-reforma-2023"} component={VacacionesDignas} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

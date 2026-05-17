@@ -255,6 +255,11 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
+                  <a href="/blog" className="hover:text-white transition">
+                    Blog y guías
+                  </a>
+                </li>
+                <li>
                   <a href="/privacy" className="hover:text-white transition">
                     Política de privacidad
                   </a>
