@@ -1,5 +1,5 @@
 import { useSEO } from "@/hooks/useSEO";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 const articulos = [
   {
@@ -31,6 +31,36 @@ const articulos = [
       "La reforma que duplicó los días de vacaciones en México. Descubre cuántos días te corresponden según tu antigüedad y cómo impacta en tu finiquito.",
     tiempo: "7 min",
     color: "border-l-green-500",
+  },
+  {
+    slug: "/blog/prima-de-antiguedad",
+    emoji: "🏅",
+    categoria: "Prestaciones Laborales",
+    titulo: "Prima de Antigüedad en México 2026: Cuándo te Corresponde y Cómo Calcularla",
+    descripcion:
+      "Todo sobre la prima de antigüedad: cuándo aplica, el tope de 2×UMA, cuándo se paga al renunciar o al ser despedido, y su tratamiento fiscal.",
+    tiempo: "6 min",
+    color: "border-l-yellow-500",
+  },
+  {
+    slug: "/blog/cuanto-corresponde-si-renuncio",
+    emoji: "💼",
+    categoria: "Guía Práctica",
+    titulo: "¿Cuánto me Corresponde si Renuncio? Guía por Años de Servicio 2026",
+    descripcion:
+      "Ejemplos reales de finiquito por renuncia con 1, 3, 5 y 10 años de servicio. Descubre cuánto puedes esperar recibir y cómo cobrar correctamente.",
+    tiempo: "7 min",
+    color: "border-l-orange-500",
+  },
+  {
+    slug: "/blog/aguinaldo-proporcional-finiquito",
+    emoji: "🎁",
+    categoria: "Prestaciones Laborales",
+    titulo: "Aguinaldo Proporcional 2026: Cómo Calcularlo en tu Finiquito",
+    descripcion:
+      "El error más común en el cálculo del aguinaldo proporcional y cómo evitarlo. Fórmula correcta, ejemplos por mes de salida y preguntas frecuentes.",
+    tiempo: "6 min",
+    color: "border-l-red-500",
   },
 ];
 
