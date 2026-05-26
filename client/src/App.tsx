@@ -12,6 +12,9 @@ import Blog from "./pages/blog/Blog";
 import ComoCalcularFiniquito from "./pages/blog/ComoCalcularFiniquito";
 import FiniquitoVsLiquidacion from "./pages/blog/FiniquitoVsLiquidacion";
 import VacacionesDignas from "./pages/blog/VacacionesDignas";
+import PrimaAntiguedad from "./pages/blog/PrimaAntiguedad";
+import CuantoCorrespondeRenunciar from "./pages/blog/CuantoCorrespondeRenunciar";
+import AguinaldoProporcional from "./pages/blog/AguinaldoProporcional";
 
 
 function Router() {
@@ -25,6 +28,9 @@ function Router() {
       <Route path={"/blog/como-calcular-finiquito"} component={ComoCalcularFiniquito} />
       <Route path={"/blog/finiquito-vs-liquidacion"} component={FiniquitoVsLiquidacion} />
       <Route path={"/blog/vacaciones-dignas-reforma-2023"} component={VacacionesDignas} />
+      <Route path={"/blog/prima-de-antiguedad"} component={PrimaAntiguedad} />
+      <Route path={"/blog/cuanto-corresponde-si-renuncio"} component={CuantoCorrespondeRenunciar} />
+      <Route path={"/blog/aguinaldo-proporcional-finiquito"} component={AguinaldoProporcional} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

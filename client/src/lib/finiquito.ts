@@ -47,6 +47,14 @@ export function calcularSalarioDiario(salarioMensual: number): number {
 }
 
 /**
+ * Tope salarial para prima de antigüedad: 2 × UMA diaria (Art. 162 LFT)
+ * UMA diaria 2026: $117.31 MXN (se actualiza cada año en febrero)
+ * Fuente: INEGI — https://www.inegi.org.mx/temas/uma/
+ */
+export const UMA_DIARIA_2026 = 117.31;
+export const TOPE_PRIMA_ANTIGUEDAD = UMA_DIARIA_2026 * 2; // $234.62
+
+/**
  * Calcula días laborados
  */
 export function calcularDiasLaborados(fechaIngreso: Date, fechaTerminacion: Date): number {
@@ -82,6 +90,28 @@ export function calcularAguinaldoProporcional(
 
   const diasAguinaldo = 15;
   return (diasAguinaldo / 365) * diasEnAnioActual * salarioDiario;
+}
+
+
+/**
+ * Calcula los días de vacaciones según la tabla LFT (Reforma Vacaciones Dignas 2023)
+ * Art. 76 LFT: 12 días al primer año, +2 días por cada año adicional hasta el año 10.
+ * A partir del año 11: 2 días más por cada 5 años de servicio.
+ *
+ * Tabla:
+ *  1 año=12  2=14  3=16  4=18  5=20  6=22  7=24  8=26  9=28  10=30
+ *  11-15=32  16-20=34  21-25=36 ...
+ */
+export function calcularDiasVacacionesLFT(fechaIngreso: Date, fechaTerminacion: Date): number {
+  const anosCompletos = Math.floor(calcularAnosServicio(fechaIngreso, fechaTerminacion));
+  if (anosCompletos < 1) return 0;
+
+  if (anosCompletos <= 10) {
+    return 10 + anosCompletos * 2;
+  } else {
+    const quinqueniosExtra = Math.floor((anosCompletos - 11) / 5);
+    return 32 + quinqueniosExtra * 2;
+  }
 }
 
 /**
@@ -133,10 +163,11 @@ export function calcularPrimaVacacional(vacacionesProporcionales: number): numbe
 }
 
 /**
- * Calcula prima de antigüedad
- * En finiquito: solo si tiene más de 15 años
- * En liquidación: desde el primer año
- * Fórmula: 12 días × Años de Servicio × Salario Diario
+ * Calcula prima de antigüedad (Art. 162 LFT)
+ * En finiquito por renuncia: solo si tiene más de 15 años de servicio
+ * En liquidación por despido injustificado: desde el primer año
+ * TOPE: el salario diario se limita a 2 × UMA diaria ($234.62 en 2026)
+ * Fórmula: 12 días × Años Completos × min(Salario Diario, 2 × UMA)
  */
 export function calcularPrimaAntiguedad(
   salarioDiario: number,
@@ -145,14 +176,16 @@ export function calcularPrimaAntiguedad(
   esLiquidacion: boolean = false
 ): number {
   const anosServicio = calcularAnosServicio(fechaIngreso, fechaTerminacion);
-  
-  // En finiquito, prima de antigüedad solo aplica si tiene más de 15 años
+
+  // En finiquito por renuncia, prima de antigüedad solo aplica con más de 15 años
   if (!esLiquidacion && anosServicio < 15) {
     return 0;
   }
-  
+
+  // Aplicar tope: salario máximo para el cálculo es 2 × UMA diaria (Art. 162 LFT)
+  const salarioEfectivo = Math.min(salarioDiario, TOPE_PRIMA_ANTIGUEDAD);
   const diasPrimaAntiguedad = 12;
-  return diasPrimaAntiguedad * Math.floor(anosServicio) * salarioDiario;
+  return diasPrimaAntiguedad * Math.floor(anosServicio) * salarioEfectivo;
 }
 
 /**
@@ -237,11 +270,15 @@ export function calcularFiniquito(input: FiniquitoInput): FiniquitoOutput {
   ];
 
   if (primaAntiguedad > 0) {
+    const salarioDiarioEfectivo = Math.min(salarioDiario, TOPE_PRIMA_ANTIGUEDAD);
+    const topeAplicado = salarioDiario > TOPE_PRIMA_ANTIGUEDAD;
     conceptos.push({
       nombre: "Prima de Antigüedad",
-      descripcion: "12 días por año de servicio",
+      descripcion: topeAplicado
+        ? `12 días por año (tope 2×UMA = $${TOPE_PRIMA_ANTIGUEDAD.toFixed(2)}/día aplicado)`
+        : "12 días por año de servicio (Art. 162 LFT)",
       monto: primaAntiguedad,
-      formula: "12 × Años de Servicio × Salario Diario",
+      formula: `12 × Años × ${topeAplicado ? `$${TOPE_PRIMA_ANTIGUEDAD.toFixed(2)} (tope 2×UMA)` : "Salario Diario"}`,
       icono: "🏅"
     });
   }
