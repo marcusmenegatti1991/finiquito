@@ -13,9 +13,8 @@ import { useState } from "react";
 import CalculadoraFiniquito from "@/components/CalculadoraFiniquito";
 import AdSense from "@/components/AdSense";
 import { useSEO } from "@/hooks/useSEO";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ChevronDown, CheckCircle, HelpCircle } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ChevronDown, HelpCircle } from "lucide-react";
 
 export default function Home() {
   useSEO({
@@ -95,20 +94,28 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="relative w-full">
-        <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&q=80&auto=format&fit=crop"
-            alt="Calculadora de Finiquito México - trabajador revisando documentos laborales"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/30"></div>
+      {/* Hero Section — CSS gradient (sin imagen externa para máximo LCP) */}
+      <section className="relative w-full bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 py-20 md:py-28 lg:py-36">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <div className="inline-block bg-white/10 text-white text-sm font-semibold px-4 py-1 rounded-full mb-6">
+            ⚖️ Conforme a la Ley Federal del Trabajo 2026
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
+            Calcula tu Finiquito<br className="hidden md:block" /> en México
+          </h1>
+          <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Gratis, rápido y 100% preciso. Aguinaldo, vacaciones, prima vacacional e indemnización según la LFT.
+          </p>
+          <a
+            href="#calculadora"
+            className="inline-block bg-white text-blue-700 font-bold text-lg py-4 px-10 rounded-xl hover:bg-blue-50 transition shadow-lg"
+          >
+            Calcular mi Finiquito →
+          </a>
         </div>
-
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
-          <ChevronDown className="h-6 w-6 text-white" />
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <ChevronDown className="h-6 w-6 text-white/70" />
         </div>
       </section>
 
@@ -139,7 +146,7 @@ export default function Home() {
       </div>
 
       {/* Calculadora Principal */}
-      <section className="py-16 bg-white">
+      <section id="calculadora" className="py-16 bg-white">
         <CalculadoraFiniquito />
       </section>
 
@@ -290,3 +297,4 @@ export default function Home() {
     </div>
   );
 }
+                                                                                                               
