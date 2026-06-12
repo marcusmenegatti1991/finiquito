@@ -1,12 +1,5 @@
 /**
  * Página Principal: Calculadora de Finiquito México
- * Diseño Híbrido: Corporativo + Educativo + Minimalista
- * 
- * Secciones:
- * 1. Hero Section con imagen profesional
- * 2. Calculadora interactiva
- * 3. Sección educativa FAQ
- * 4. Footer con información legal
  */
 
 import { useState } from "react";
@@ -45,7 +38,7 @@ export default function Home() {
     {
       pregunta: "¿Cuántas vacaciones me corresponden?",
       respuesta:
-        "Mínimo 12 días después de 1 año de trabajo. Se incrementan 2 días por cada año adicional hasta un máximo de 20 días. Si terminas antes del año, se calcula proporcionalmente."
+        "Mínimo 12 días después de 1 año de trabajo. Se incrementan 2 días por cada año adicional. Si terminas antes del año, se calcula proporcionalmente."
     },
     {
       pregunta: "¿Qué es la prima de antigüedad?",
@@ -70,31 +63,15 @@ export default function Home() {
   ];
 
   const beneficios = [
-    {
-      icono: "⚡",
-      titulo: "Cálculo Rápido",
-      descripcion: "Obtén tu finiquito en segundos sin complicaciones"
-    },
-    {
-      icono: "✅",
-      titulo: "100% Conforme a la Ley",
-      descripcion: "Basado en la Ley Federal del Trabajo vigente"
-    },
-    {
-      icono: "🔒",
-      titulo: "Transparencia Total",
-      descripcion: "Ve exactamente cómo se calcula cada componente"
-    },
-    {
-      icono: "📱",
-      titulo: "Accesible en Cualquier Dispositivo",
-      descripcion: "Funciona perfectamente en móvil, tablet y desktop"
-    }
+    { icono: "⚡", titulo: "Cálculo Rápido", descripcion: "Obtén tu finiquito en segundos sin complicaciones" },
+    { icono: "✅", titulo: "100% Conforme a la Ley", descripcion: "Basado en la Ley Federal del Trabajo vigente" },
+    { icono: "🔒", titulo: "Transparencia Total", descripcion: "Ve exactamente cómo se calcula cada componente" },
+    { icono: "📱", titulo: "Accesible en Cualquier Dispositivo", descripcion: "Funciona perfectamente en móvil, tablet y desktop" }
   ];
 
   return (
     <div className="w-full">
-      {/* Hero Section — CSS gradient (sin imagen externa para máximo LCP) */}
+      {/* Hero Section — CSS gradient sin imagen externa */}
       <section className="relative w-full bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 py-20 md:py-28 lg:py-36">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="inline-block bg-white/10 text-white text-sm font-semibold px-4 py-1 rounded-full mb-6">
@@ -113,19 +90,17 @@ export default function Home() {
             Calcular mi Finiquito →
           </a>
         </div>
-        {/* Scroll indicator */}
         <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
           <ChevronDown className="h-6 w-6 text-white/70" />
         </div>
       </section>
 
-      {/* Sección de Beneficios */}
+      {/* Beneficios */}
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
             ¿Por qué usar nuestra calculadora?
           </h2>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {beneficios.map((beneficio, idx) => (
               <Card key={idx} className="text-center hover:shadow-lg transition-shadow">
@@ -140,7 +115,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Anuncio AdSense — Banner entre beneficios y calculadora */}
+      {/* AdSense Banner */}
       <div className="max-w-5xl mx-auto px-4 py-4">
         <AdSense slot="SLOT_BANNER_HOME" format="horizontal" />
       </div>
@@ -150,13 +125,12 @@ export default function Home() {
         <CalculadoraFiniquito />
       </section>
 
-      {/* Sección FAQ */}
+      {/* FAQ */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
             Preguntas Frecuentes
           </h2>
-
           <div className="space-y-3">
             {faqItems.map((item, idx) => (
               <Card
@@ -177,7 +151,6 @@ export default function Home() {
                     />
                   </div>
                 </CardHeader>
-
                 {expandedFaq === idx && (
                   <CardContent className="pt-0">
                     <p className="text-gray-700 leading-relaxed">{item.respuesta}</p>
@@ -189,35 +162,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sección de Información Legal */}
+      {/* Información Legal */}
       <section className="py-16 bg-blue-50 border-t-4 border-primary">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6 text-gray-900">Información Importante</h2>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card>
               <CardHeader>
                 <CardTitle className="text-primary">Fundamento Legal</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-sm text-gray-700">
-                <p>
-                  <strong>Aguinaldo:</strong> Artículo 87 LFT (pago antes del 20 de diciembre)
-                </p>
-                <p>
-                  <strong>Vacaciones:</strong> Artículos 76, 79, 80 LFT (reforma "Vacaciones Dignas")
-                </p>
-                <p>
-                  <strong>Prima Vacacional:</strong> Artículo 80 LFT (mínimo 25%)
-                </p>
-                <p>
-                  <strong>Prima de Antigüedad:</strong> Artículo 162 LFT (12 días por año)
-                </p>
-                <p>
-                  <strong>Despido Injustificado:</strong> Artículos 48 y 50 LFT
-                </p>
+                <p><strong>Aguinaldo:</strong> Artículo 87 LFT</p>
+                <p><strong>Vacaciones:</strong> Artículos 76, 79, 80 LFT (reforma "Vacaciones Dignas")</p>
+                <p><strong>Prima Vacacional:</strong> Artículo 80 LFT (mínimo 25%)</p>
+                <p><strong>Prima de Antigüedad:</strong> Artículo 162 LFT (12 días por año)</p>
+                <p><strong>Despido Injustificado:</strong> Artículos 48 y 50 LFT</p>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-primary">Aviso Legal</CardTitle>
@@ -248,53 +209,29 @@ export default function Home() {
             <div>
               <h3 className="font-bold text-white mb-4">Calculadora de Finiquito</h3>
               <p className="text-sm">
-                Herramienta gratuita para calcular tu finiquito según la Ley Federal del Trabajo de
-                México.
+                Herramienta gratuita para calcular tu finiquito según la Ley Federal del Trabajo de México.
               </p>
             </div>
-
             <div>
               <h4 className="font-bold text-white mb-4">Enlaces Útiles</h4>
               <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="/about" className="hover:text-white transition">
-                    Sobre nosotros
-                  </a>
-                </li>
-                <li>
-                  <a href="/blog" className="hover:text-white transition">
-                    Blog y guías
-                  </a>
-                </li>
-                <li>
-                  <a href="/privacy" className="hover:text-white transition">
-                    Política de privacidad
-                  </a>
-                </li>
-                <li>
-                  <a href="/terms" className="hover:text-white transition">
-                    Términos de servicio
-                  </a>
-                </li>
+                <li><a href="/about" className="hover:text-white transition">Sobre nosotros</a></li>
+                <li><a href="/blog" className="hover:text-white transition">Blog y guías</a></li>
+                <li><a href="/privacy" className="hover:text-white transition">Política de privacidad</a></li>
+                <li><a href="/terms" className="hover:text-white transition">Términos de servicio</a></li>
               </ul>
             </div>
-
             <div>
               <h4 className="font-bold text-white mb-4">Contacto</h4>
               <p className="text-sm">¿Preguntas? Contáctanos en:</p>
               <p className="text-sm text-gray-400">info@calculadora-finiquito.mx</p>
             </div>
           </div>
-
           <div className="border-t border-gray-700 pt-8 text-center text-sm">
-            <p>
-              &copy; 2026 Calculadora de Finiquito. Todos los derechos reservados. | Basado en la
-              Ley Federal del Trabajo de México
-            </p>
+            <p>© 2026 Calculadora de Finiquito. Todos los derechos reservados. | Basado en la Ley Federal del Trabajo de México</p>
           </div>
         </div>
       </footer>
     </div>
   );
 }
-                                                                                                               
