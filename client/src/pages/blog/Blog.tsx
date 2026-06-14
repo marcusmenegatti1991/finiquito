@@ -1,5 +1,5 @@
 import { useSEO } from "@/hooks/useSEO";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 const articulos = [
   {
@@ -132,4 +132,35 @@ export default function Blog() {
                           <span className="text-xs text-gray-400">⏱️ {art.tiempo} de lectura</span>
                         </div>
                         <h2 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors mb-2">
-             
+                          {art.titulo}
+                        </h2>
+                        <p className="text-gray-600 text-sm leading-relaxed">{art.descripcion}</p>
+                        <p className="text-primary text-sm font-semibold mt-3 group-hover:underline">
+                          Leer artículo →
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </a>
+            ))}
+          </div>
+
+          {/* CTA calculadora */}
+          <div className="mt-16 bg-gradient-to-r from-primary to-secondary rounded-xl p-8 text-center">
+            <h2 className="text-2xl font-bold text-white mb-3">¿Listo para calcular tu finiquito?</h2>
+            <p className="text-blue-100 mb-6">
+              Usa nuestra calculadora gratuita, rápida y 100% conforme a la Ley Federal del Trabajo
+            </p>
+            <a
+              href="/"
+              className="inline-block bg-white text-primary font-bold py-3 px-8 rounded-lg hover:bg-blue-50 transition text-lg"
+            >
+              Ir a la Calculadora →
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
