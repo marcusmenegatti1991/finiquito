@@ -62,6 +62,36 @@ const articulos = [
     tiempo: "6 min",
     color: "border-l-red-500",
   },
+  {
+    slug: "/blog/que-hacer-con-tu-finiquito",
+    emoji: "💡",
+    categoria: "Finanzas Personales",
+    titulo: "Qué Hacer con tu Finiquito: 5 Decisiones Inteligentes (2026)",
+    descripcion:
+      "Recibiste ese dinero — el plan paso a paso para no desperdiciarlo. Fondo de emergencia, pago de deudas, inversión, capacitación y más.",
+    tiempo: "8 min",
+    color: "border-l-blue-600",
+  },
+  {
+    slug: "/blog/donde-invertir-tu-finiquito",
+    emoji: "📈",
+    categoria: "Inversiones",
+    titulo: "Dónde Invertir tu Finiquito para que No Pierda Valor (2026)",
+    descripcion:
+      "CETES, Nu, GBM+ y fondos indexados. Comparativa completa de opciones de inversión para distintos plazos, montos y perfiles de riesgo.",
+    tiempo: "9 min",
+    color: "border-l-green-600",
+  },
+  {
+    slug: "/blog/mejores-tarjetas-sin-empleo",
+    emoji: "💳",
+    categoria: "Tarjetas de Crédito",
+    titulo: "Mejores Tarjetas de Crédito sin Comprobante de Ingresos México 2026",
+    descripcion:
+      "Nu, Stori y Klar: las tarjetas que no piden trabajo formal. Mantén tu historial crediticio activo mientras buscas empleo.",
+    tiempo: "7 min",
+    color: "border-l-slate-600",
+  },
 ];
 
 export default function Blog() {
@@ -102,35 +132,4 @@ export default function Blog() {
                           <span className="text-xs text-gray-400">⏱️ {art.tiempo} de lectura</span>
                         </div>
                         <h2 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors mb-2">
-                          {art.titulo}
-                        </h2>
-                        <p className="text-gray-600 text-sm leading-relaxed">{art.descripcion}</p>
-                        <p className="text-primary text-sm font-semibold mt-3 group-hover:underline">
-                          Leer artículo →
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </a>
-            ))}
-          </div>
-
-          {/* CTA calculadora */}
-          <div className="mt-16 bg-gradient-to-r from-primary to-secondary rounded-xl p-8 text-center">
-            <h2 className="text-2xl font-bold text-white mb-3">¿Listo para calcular tu finiquito?</h2>
-            <p className="text-blue-100 mb-6">
-              Usa nuestra calculadora gratuita, rápida y 100% conforme a la Ley Federal del Trabajo
-            </p>
-            <a
-              href="/"
-              className="inline-block bg-white text-primary font-bold py-3 px-8 rounded-lg hover:bg-blue-50 transition text-lg"
-            >
-              Ir a la Calculadora →
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
+             

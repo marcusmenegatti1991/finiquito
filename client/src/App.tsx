@@ -15,6 +15,9 @@ import VacacionesDignas from "./pages/blog/VacacionesDignas";
 import PrimaAntiguedad from "./pages/blog/PrimaAntiguedad";
 import CuantoCorrespondeRenunciar from "./pages/blog/CuantoCorrespondeRenunciar";
 import AguinaldoProporcional from "./pages/blog/AguinaldoProporcional";
+import QueHacerConTuFiniquito from "./pages/blog/QueHacerConTuFiniquito";
+import DondeInvertirTuFiniquito from "./pages/blog/DondeInvertirTuFiniquito";
+import MejoresTarjetasSinEmpleo from "./pages/blog/MejoresTarjetasSinEmpleo";
 
 
 function Router() {
@@ -31,6 +34,9 @@ function Router() {
       <Route path={"/blog/prima-de-antiguedad"} component={PrimaAntiguedad} />
       <Route path={"/blog/cuanto-corresponde-si-renuncio"} component={CuantoCorrespondeRenunciar} />
       <Route path={"/blog/aguinaldo-proporcional-finiquito"} component={AguinaldoProporcional} />
+      <Route path={"/blog/que-hacer-con-tu-finiquito"} component={QueHacerConTuFiniquito} />
+      <Route path={"/blog/donde-invertir-tu-finiquito"} component={DondeInvertirTuFiniquito} />
+      <Route path={"/blog/mejores-tarjetas-sin-empleo"} component={MejoresTarjetasSinEmpleo} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
