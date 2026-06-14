@@ -18,7 +18,9 @@ import AguinaldoProporcional from "./pages/blog/AguinaldoProporcional";
 import QueHacerConTuFiniquito from "./pages/blog/QueHacerConTuFiniquito";
 import DondeInvertirTuFiniquito from "./pages/blog/DondeInvertirTuFiniquito";
 import MejoresTarjetasSinEmpleo from "./pages/blog/MejoresTarjetasSinEmpleo";
-
+import CuantoTiempoPagarFiniquito from "./pages/blog/CuantoTiempoPagarFiniquito";
+import FiniquitoConEmbarazo from "./pages/blog/FiniquitoConEmbarazo";
+import ComoImpugnarFiniquitoIncorrecto from "./pages/blog/ComoImpugnarFiniquitoIncorrecto";
 
 function Router() {
   return (
@@ -37,8 +39,10 @@ function Router() {
       <Route path={"/blog/que-hacer-con-tu-finiquito"} component={QueHacerConTuFiniquito} />
       <Route path={"/blog/donde-invertir-tu-finiquito"} component={DondeInvertirTuFiniquito} />
       <Route path={"/blog/mejores-tarjetas-sin-empleo"} component={MejoresTarjetasSinEmpleo} />
+      <Route path={"/blog/cuanto-tiempo-para-pagar-finiquito"} component={CuantoTiempoPagarFiniquito} />
+      <Route path={"/blog/finiquito-con-embarazo"} component={FiniquitoConEmbarazo} />
+      <Route path={"/blog/como-impugnar-finiquito-incorrecto"} component={ComoImpugnarFiniquitoIncorrecto} />
       <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
   );
