@@ -71,7 +71,7 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      {/* Hero Section — CSS gradient sin imagen externa */}
+      {/* Hero Section */}
       <section className="relative w-full bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 py-20 md:py-28 lg:py-36">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="inline-block bg-white/10 text-white text-sm font-semibold px-4 py-1 rounded-full mb-6">
@@ -125,7 +125,7 @@ export default function Home() {
         <CalculadoraFiniquito />
       </section>
 
-      {/* ¿Y ahora qué hago con ese dinero? — Artículos destacados */}
+      {/* Y ahora que hago con ese dinero */}
       <section className="py-16 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
@@ -140,69 +140,54 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Artículo 2 */}
             <a href="/blog/que-hacer-con-tu-finiquito" className="group block">
               <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow h-full border border-gray-100 overflow-hidden">
                 <div className="bg-gradient-to-br from-blue-600 to-indigo-600 p-6">
                   <span className="text-5xl">💡</span>
                 </div>
                 <div className="p-6">
-                  <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded">
-                    Finanzas Personales
-                  </span>
+                  <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded">Finanzas Personales</span>
                   <h3 className="text-xl font-bold text-gray-900 mt-3 mb-2 group-hover:text-blue-600 transition-colors">
                     5 Decisiones Inteligentes con tu Finiquito
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
                     Fondo de emergencia, pago de deudas, inversión y más. El plan paso a paso para no desperdiciar tu finiquito.
                   </p>
-                  <span className="text-blue-600 text-sm font-semibold group-hover:underline">
-                    Leer guía →
-                  </span>
+                  <span className="text-blue-600 text-sm font-semibold group-hover:underline">Leer guía →</span>
                 </div>
               </div>
             </a>
-            {/* Artículo 3 */}
             <a href="/blog/donde-invertir-tu-finiquito" className="group block">
               <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow h-full border border-gray-100 overflow-hidden">
                 <div className="bg-gradient-to-br from-green-600 to-teal-600 p-6">
                   <span className="text-5xl">📈</span>
                 </div>
                 <div className="p-6">
-                  <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded">
-                    Inversiones
-                  </span>
+                  <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded">Inversiones</span>
                   <h3 className="text-xl font-bold text-gray-900 mt-3 mb-2 group-hover:text-green-600 transition-colors">
                     Dónde Invertir tu Finiquito para que No Pierda Valor
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
                     CETES, Nu, GBM+ y más. Comparativa de opciones con rendimiento real para distintos plazos y perfiles.
                   </p>
-                  <span className="text-green-600 text-sm font-semibold group-hover:underline">
-                    Leer guía →
-                  </span>
+                  <span className="text-green-600 text-sm font-semibold group-hover:underline">Leer guía →</span>
                 </div>
               </div>
             </a>
-            {/* Artículo 4 */}
             <a href="/blog/mejores-tarjetas-sin-empleo" className="group block">
               <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow h-full border border-gray-100 overflow-hidden">
                 <div className="bg-gradient-to-br from-slate-600 to-blue-800 p-6">
                   <span className="text-5xl">💳</span>
                 </div>
                 <div className="p-6">
-                  <span className="text-xs font-semibold text-slate-600 bg-slate-50 px-2 py-1 rounded">
-                    Tarjetas de Crédito
-                  </span>
+                  <span className="text-xs font-semibold text-slate-600 bg-slate-50 px-2 py-1 rounded">Tarjetas de Crédito</span>
                   <h3 className="text-xl font-bold text-gray-900 mt-3 mb-2 group-hover:text-slate-600 transition-colors">
                     Mejores Tarjetas si Te Quedaste Sin Empleo
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
                     Nu, Stori, Klar. Las tarjetas sin comprobante de ingresos para mantener tu historial crediticio activo.
                   </p>
-                  <span className="text-slate-600 text-sm font-semibold group-hover:underline">
-                    Leer guía →
-                  </span>
+                  <span className="text-slate-600 text-sm font-semibold group-hover:underline">Leer guía →</span>
                 </div>
               </div>
             </a>
@@ -218,4 +203,110 @@ export default function Home() {
       {/* FAQ */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 classNa
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
+            Preguntas Frecuentes
+          </h2>
+          <div className="space-y-3">
+            {faqItems.map((item, idx) => (
+              <Card
+                key={idx}
+                className="cursor-pointer hover:shadow-md transition-shadow"
+                onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
+              >
+                <CardHeader className="pb-3">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-start gap-3 flex-1">
+                      <HelpCircle className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                      <CardTitle className="text-lg text-left">{item.pregunta}</CardTitle>
+                    </div>
+                    <ChevronDown
+                      className={`h-5 w-5 text-gray-500 transition-transform flex-shrink-0 ${
+                        expandedFaq === idx ? "transform rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </CardHeader>
+                {expandedFaq === idx && (
+                  <CardContent className="pt-0">
+                    <p className="text-gray-700 leading-relaxed">{item.respuesta}</p>
+                  </CardContent>
+                )}
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Información Legal */}
+      <section className="py-16 bg-blue-50 border-t-4 border-primary">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl font-bold mb-6 text-gray-900">Información Importante</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-primary">Fundamento Legal</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm text-gray-700">
+                <p><strong>Aguinaldo:</strong> Artículo 87 LFT</p>
+                <p><strong>Vacaciones:</strong> Artículos 76, 79, 80 LFT (reforma "Vacaciones Dignas")</p>
+                <p><strong>Prima Vacacional:</strong> Artículo 80 LFT (mínimo 25%)</p>
+                <p><strong>Prima de Antigüedad:</strong> Artículo 162 LFT (12 días por año)</p>
+                <p><strong>Despido Injustificado:</strong> Artículos 48 y 50 LFT</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-primary">Aviso Legal</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm text-gray-700">
+                <p>
+                  Esta calculadora proporciona una estimación basada en la Ley Federal del Trabajo
+                  vigente. No constituye asesoría legal profesional.
+                </p>
+                <p>
+                  Para casos específicos, complejos o con circunstancias especiales, consulta con un
+                  asesor laboral certificado o abogado especializado.
+                </p>
+                <p>
+                  Los cálculos pueden variar según convenios colectivos, contratos individuales o
+                  situaciones particulares.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-300 py-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <h3 className="font-bold text-white mb-4">Calculadora de Finiquito</h3>
+              <p className="text-sm">
+                Herramienta gratuita para calcular tu finiquito según la Ley Federal del Trabajo de México.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold text-white mb-4">Enlaces Útiles</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="/about" className="hover:text-white transition">Sobre nosotros</a></li>
+                <li><a href="/blog" className="hover:text-white transition">Blog y guías</a></li>
+                <li><a href="/privacy" className="hover:text-white transition">Política de privacidad</a></li>
+                <li><a href="/terms" className="hover:text-white transition">Términos de servicio</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-white mb-4">Contacto</h4>
+              <p className="text-sm">¿Preguntas? Contáctanos en:</p>
+              <p className="text-sm text-gray-400">info@calculadora-finiquito.mx</p>
+            </div>
+          </div>
+          <div className="border-t border-gray-700 pt-8 text-center text-sm">
+            <p>© 2026 Calculadora de Finiquito. Todos los derechos reservados. | Basado en la Ley Federal del Trabajo de México</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
