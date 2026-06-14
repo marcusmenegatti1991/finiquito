@@ -1,6 +1,5 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
-  X-Content-Type-Options: nosniff
 
 /*.js
   Cache-Control: public, max-age=31536000, immutable
@@ -8,22 +7,8 @@
 /*.css
   Cache-Control: public, max-age=31536000, immutable
 
-/*.woff2
-  Cache-Control: public, max-age=31536000, immutable
-
-/sitemap.xml
-  Cache-Control: public, max-age=86400
-  Content-Type: application/xml; charset=utf-8
-
-/robots.txt
-  Cache-Control: public, max-age=86400
-
-/ads.txt
-  Cache-Control: public, max-age=86400
-
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
   Cache-Control: public, max-age=0, must-revalidate
