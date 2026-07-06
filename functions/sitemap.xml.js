@@ -5,7 +5,7 @@ export async function onRequest() {
   <url><loc>https://finiquito.xyz/about</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://finiquito.xyz/privacy</loc><lastmod>2026-05-25</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://finiquito.xyz/terms</loc><lastmod>2026-05-25</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://finiquito.xyz/blog</loc><lastmod>2026-06-14</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://finiquito.xyz/blog</loc><lastmod>2026-07-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://finiquito.xyz/blog/como-calcular-finiquito</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://finiquito.xyz/blog/finiquito-vs-liquidacion</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://finiquito.xyz/blog/vacaciones-dignas-reforma-2023</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -15,9 +15,13 @@ export async function onRequest() {
   <url><loc>https://finiquito.xyz/blog/que-hacer-con-tu-finiquito</loc><lastmod>2026-06-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://finiquito.xyz/blog/donde-invertir-tu-finiquito</loc><lastmod>2026-06-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://finiquito.xyz/blog/mejores-tarjetas-sin-empleo</loc><lastmod>2026-06-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://finiquito.xyz/blog/cuanto-tiempo-para-pagar-finiquito</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://finiquito.xyz/blog/finiquito-con-embarazo</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://finiquito.xyz/blog/como-impugnar-finiquito-incorrecto</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://finiquito.xyz/blog/cuanto-tiempo-para-pagar-finiquito</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://finiquito.xyz/blog/finiquito-con-embarazo</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://finiquito.xyz/blog/como-impugnar-finiquito-incorrecto</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://finiquito.xyz/blog/carta-de-renuncia-mexico</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://finiquito.xyz/blog/finiquito-y-seguro-social-imss</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://finiquito.xyz/blog/despido-durante-incapacidad</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://finiquito.xyz/blog/acta-administrativa-finiquito</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 </urlset>`;
 
   return new Response(sitemap, {

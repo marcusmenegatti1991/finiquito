@@ -1,201 +1,240 @@
-/**
- * Artículo: Cómo impugnar un finiquito incorrecto
- * Slug: /blog/como-impugnar-finiquito-incorrecto
- */
-
 import { useSEO } from "@/hooks/useSEO";
+import { Card, CardContent } from "@/components/ui/card";
 import AdSense from "@/components/AdSense";
 
 export default function ComoImpugnarFiniquitoIncorrecto() {
   useSEO({
     title: "Cómo Impugnar un Finiquito Incorrecto en México 2026",
     description:
-      "Tu empresa te ofreció un finiquito y crees que los montos están mal. Aquí te explicamos cómo verificar si es correcto, qué hacer si no lo es y cómo reclamar.",
+      "¿Tu finiquito tiene errores o te pagaron menos de lo que corresponde? Aprende a identificar errores, negociar, acudir a la CFCRL y demandar si es necesario.",
     canonical: "/blog/como-impugnar-finiquito-incorrecto",
   });
 
   return (
     <div className="w-full min-h-screen bg-white">
-      <section className="bg-gradient-to-r from-orange-700 to-amber-600 py-16">
+      <section className="bg-gradient-to-r from-primary to-secondary py-16">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="inline-block bg-white/10 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
-            ⚖️ Reclamos Laborales
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Cómo Impugnar un Finiquito Incorrecto en México
+          <div className="text-blue-200 text-sm mb-3 font-medium">🔍 Derechos Laborales</div>
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+            Cómo Impugnar un Finiquito Incorrecto en México 2026
           </h1>
-          <p className="text-xl text-orange-100">
-            Antes de firmar, verifica los números. Un error puede costarte miles de pesos que te corresponden por ley.
+          <p className="text-lg text-blue-50">
+            Firmaste un finiquito con errores o te pagaron menos de lo que te corresponde. No todo está perdido — te explicamos qué puedes hacer y hasta cuándo.
           </p>
-          <div className="flex items-center gap-4 mt-6 text-orange-200 text-sm">
-            <span>⏱️ 8 min de lectura</span>
+          <div className="flex items-center gap-4 mt-6 text-blue-200 text-sm">
+            <span>📅 5 de julio de 2026</span>
             <span>•</span>
-            <span>Actualizado junio 2026</span>
+            <span>⏱️ 8 min de lectura</span>
           </div>
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto px-4 py-4">
-        <AdSense slot="SLOT_ARTICULO_TOP" format="horizontal" />
+      <div className="bg-blue-50 border-b border-blue-100 py-4">
+        <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-gray-700 text-sm">Primero verifica el monto correcto de tu finiquito</p>
+          <a href="/" className="bg-primary text-white font-semibold px-5 py-2 rounded-lg hover:bg-blue-700 transition text-sm whitespace-nowrap">
+            → Calcular mi Finiquito
+          </a>
+        </div>
       </div>
 
-      <article className="max-w-4xl mx-auto px-4 py-12">
+      <article className="py-12">
+        <div className="max-w-4xl mx-auto px-4 space-y-10">
 
-        <p className="text-lg text-gray-700 leading-relaxed mb-8">
-          Muchos trabajadores firman el finiquito sin revisarlo a detalle, ya sea por presión de la
-          empresa, desconocimiento o urgencia. Pero antes de firmar, tienes todo el derecho de revisar
-          cada número. Los errores más comunes en los finiquitos van desde el salario base incorrecto
-          hasta omitir días de vacaciones o calcular mal el aguinaldo.
-        </p>
+          <section>
+            <p className="text-lg text-gray-700 leading-relaxed mb-4">
+              Muchos trabajadores firman su finiquito sin revisarlo a fondo y solo después se dan cuenta de que les pagaron menos de lo que les correspondía. La buena noticia es que <strong>firmar un finiquito incorrecto no siempre cierra la puerta</strong> para reclamar la diferencia.
+            </p>
+          </section>
 
-        <section className="mb-10">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Errores Más Comunes en los Finiquitos
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              { icon: "💰", titulo: "Salario base incorrecto", desc: "Algunas empresas calculan con el salario neto en lugar del salario diario integrado, que incluye partes proporcionales de prestaciones." },
-              { icon: "📅", titulo: "Días trabajados mal contados", desc: "Verificar exactamente desde qué fecha hasta qué fecha se cuentan los días laborados. Los errores de un día pueden significar diferencias importantes." },
-              { icon: "🏖️", titulo: "Vacaciones no pagadas", desc: "Si tienes vacaciones acumuladas no gozadas, la empresa debe pagarlas en el finiquito aunque hayas renunciado." },
-              { icon: "🎁", titulo: "Aguinaldo mal calculado", desc: "La fórmula correcta es (15 ÷ 365) × días trabajados en el año × salario diario. Si usan 360 días o ignoran algún período, el cálculo está mal." },
-              { icon: "🔢", titulo: "Prima vacacional omitida", desc: "El 25% adicional sobre las vacaciones proporcionales es obligatorio por ley. Muchas empresas lo omiten pensando que solo aplica en vacaciones gozadas." },
-              { icon: "📊", titulo: "Prima de antigüedad incorrecta", desc: "Si tienes más de 15 años, la prima de antigüedad es obligatoria incluso al renunciar. Aplica sobre 12 días por año con tope de 2 veces la UMA." },
-            ].map((error, i) => (
-              <div key={i} className="bg-red-50 border border-red-100 rounded-xl p-5">
-                <div className="text-2xl mb-2">{error.icon}</div>
-                <h3 className="font-bold text-red-900 mb-2">{error.titulo}</h3>
-                <p className="text-gray-700 text-sm leading-relaxed">{error.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+          <AdSense slot="SLOT_BLOG_IMPUGNAR" format="horizontal" />
 
-        <section className="mb-10">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Paso 1: Verifica el Finiquito Antes de Firmar
-          </h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Lo primero es calcular tú mismo cuánto te corresponde y compararlo con lo que te ofrece
-            la empresa. Usa nuestra calculadora gratuita para obtener el monto correcto según la LFT:
-          </p>
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-            <h3 className="font-bold text-blue-900 mb-3">🧮 Datos que necesitas para verificar:</h3>
-            <ul className="space-y-2 text-sm text-blue-800">
-              <li>• Tu fecha de ingreso y fecha de salida exactas</li>
-              <li>• Tu salario diario (salario mensual ÷ 30)</li>
-              <li>• Tipo de separación (renuncia, despido justificado o injustificado)</li>
-              <li>• Días de vacaciones tomados en el último año</li>
-              <li>• Cualquier bono o comisión pendiente de pago</li>
-            </ul>
-            <a href="/" className="inline-block mt-4 bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 transition text-sm">
-              Calcular mi Finiquito Correcto →
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Errores Más Comunes en los Finiquitos</h2>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              Antes de impugnar, identifica exactamente qué está mal. Los errores más frecuentes son:
+            </p>
+            <div className="space-y-3">
+              {[
+                { icon: "🏖️", error: "Vacaciones calculadas con la tabla vieja", desc: "Desde 2023 aplica la reforma de Vacaciones Dignas. Si trabajaste más de un año, te corresponden el doble de días que antes. Muchas empresas siguen usando la tabla anterior." },
+                { icon: "💰", error: "Salario diario calculado incorrectamente", desc: "El salario diario integrado debe incluir partes proporcionales de aguinaldo, vacaciones y prima vacacional — no solo el salario base mensual." },
+                { icon: "🎁", error: "Aguinaldo proporcional omitido", desc: "Algunas empresas solo calculan lo del período anterior y olvidan los meses transcurridos del año actual." },
+                { icon: "💸", error: "Prima vacacional no incluida", desc: "El 25% adicional sobre las vacaciones es obligatorio por ley. No es opcional ni discrecional." },
+                { icon: "📅", error: "Fecha de ingreso incorrecta", desc: "Usar una fecha posterior a la real reduce la antigüedad y por tanto las vacaciones, prima de antigüedad y aguinaldo." },
+              ].map((item, i) => (
+                <Card key={i} className="border-l-4 border-l-orange-400 bg-orange-50">
+                  <CardContent className="pt-4 pb-4">
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl flex-shrink-0">{item.icon}</span>
+                      <div>
+                        <h3 className="font-bold text-gray-900 mb-1">{item.error}</h3>
+                        <p className="text-sm text-gray-600">{item.desc}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">¿Se Puede Impugnar un Finiquito ya Firmado?</h2>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              Depende de las circunstancias:
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              <Card className="border-l-4 border-l-green-500 bg-green-50">
+                <CardContent className="pt-4 pb-4">
+                  <h3 className="font-bold text-green-800 mb-2">✅ Sí se puede impugnar si:</h3>
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    <li>• Te obligaron a firmar bajo presión o amenazas</li>
+                    <li>• El documento contiene errores matemáticos evidentes</li>
+                    <li>• Firmaste sin entender lo que decía (vicio en el consentimiento)</li>
+                    <li>• No estaba firmado ante testigos o ratificado ante autoridad</li>
+                    <li>• Omitieron prestaciones que son irrenunciables por ley</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card className="border-l-4 border-l-red-500 bg-red-50">
+                <CardContent className="pt-4 pb-4">
+                  <h3 className="font-bold text-red-800 mb-2">❌ Más difícil de impugnar si:</h3>
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    <li>• Fue ratificado ante la CFCRL o un notario</li>
+                    <li>• Firmaste con pleno conocimiento del monto</li>
+                    <li>• Hay cláusula expresa de "pago total y finiquito"</li>
+                    <li>• Pasaron más de 2 años desde que lo firmaste</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </section>
+
+          <AdSense slot="SLOT_BLOG_IMPUGNAR_2" format="rectangle" />
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Paso a Paso: Cómo Reclamar tu Finiquito</h2>
+            <div className="space-y-4">
+              {[
+                {
+                  num: "1",
+                  titulo: "Calcula el monto correcto",
+                  desc: "Antes de cualquier acción, calcula exactamente cuánto te corresponde usando nuestra calculadora. Imprime o guarda el resultado — será tu referencia en cualquier negociación o proceso.",
+                  color: "bg-blue-500"
+                },
+                {
+                  num: "2",
+                  titulo: "Intenta la negociación directa",
+                  desc: "Contacta a tu empresa por escrito (correo electrónico para que quede registro) señalando los errores específicos con sus cálculos. Muchas veces el departamento de RRHH acepta corregirlo sin necesidad de trámites formales.",
+                  color: "bg-green-500"
+                },
+                {
+                  num: "3",
+                  titulo: "Acude a la CFCRL (gratuito)",
+                  desc: "Si la empresa no responde o rechaza la corrección, presenta tu caso en el Centro Federal de Conciliación y Registro Laboral. El trámite de conciliación es gratuito y obligatorio antes de demandar. Ve a cfcrl.gob.mx para iniciar en línea.",
+                  color: "bg-yellow-500"
+                },
+                {
+                  num: "4",
+                  titulo: "Conciliación con la empresa",
+                  desc: "La CFCRL convoca a ambas partes. En esta etapa se busca un acuerdo amistoso. Si llegas con tus cálculos bien documentados, tienes buenas posibilidades de conseguir al menos una parte de la diferencia.",
+                  color: "bg-orange-500"
+                },
+                {
+                  num: "5",
+                  titulo: "Demanda ante Tribunal Laboral (si falla la conciliación)",
+                  desc: "Si no hay acuerdo, puedes demandar. Un abogado laboralista puede evaluar si vale la pena según el monto en disputa. Muchos trabajan a porcentaje del monto recuperado (20-30%), sin costo inicial.",
+                  color: "bg-red-500"
+                },
+              ].map((paso, i) => (
+                <div key={i} className="flex items-start gap-4 bg-white border border-gray-200 rounded-lg p-4">
+                  <span className={`${paso.color} text-white font-bold w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0`}>{paso.num}</span>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">{paso.titulo}</h3>
+                    <p className="text-gray-600 text-sm">{paso.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Documentos que Necesitas Reunir</h2>
+            <div className="grid md:grid-cols-2 gap-3">
+              {[
+                "Copia de tu contrato de trabajo original",
+                "Todos tus recibos de nómina (especialmente los últimos 3 meses)",
+                "El documento de finiquito que firmaste",
+                "Comprobante del pago recibido (transferencia, depósito, voucher)",
+                "Registro de vacaciones tomadas (si lo tienes)",
+                "Correos o mensajes donde la empresa reconoció la relación laboral",
+                "Cualquier otro documento que pruebe tu antigüedad y salario",
+              ].map((doc, i) => (
+                <div key={i} className="flex items-start gap-2 bg-gray-50 rounded p-3 border border-gray-200">
+                  <span className="text-primary font-bold">📄</span>
+                  <p className="text-gray-700 text-sm">{doc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <AdSense slot="SLOT_BLOG_IMPUGNAR_3" format="horizontal" />
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Prescripción: ¿Hasta Cuándo Puedo Reclamar?</h2>
+            <Card className="border-l-4 border-l-purple-500 bg-purple-50">
+              <CardContent className="pt-4 pb-4">
+                <p className="text-gray-700 mb-3">
+                  Según el <strong>Artículo 516 de la LFT</strong>, las acciones laborales prescriben (se extinguen) en:
+                </p>
+                <ul className="space-y-2 text-gray-700">
+                  <li>⏰ <strong>2 años</strong> para reclamar partes del finiquito no pagadas</li>
+                  <li>⏰ <strong>2 años</strong> para reclamar diferencias en el monto pagado</li>
+                  <li>⏰ <strong>1 año</strong> para reclamar prestaciones que vencen periódicamente (como vacaciones de años anteriores)</li>
+                </ul>
+                <p className="text-gray-700 mt-3 text-sm">
+                  El plazo empieza a contar desde el día en que terminó la relación laboral o desde que debió pagarse la prestación.
+                </p>
+              </CardContent>
+            </Card>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Preguntas Frecuentes</h2>
+            <div className="space-y-4">
+              {[
+                {
+                  q: "¿Necesito contratar un abogado para impugnar el finiquito?",
+                  a: "Para la etapa de conciliación ante la CFCRL, no es obligatorio. Puedes ir solo. Para la demanda ante Tribunal sí es muy recomendable tener asesoría legal, aunque muchos abogados laboralistas trabajan sin cobrar por adelantado."
+                },
+                {
+                  q: "¿Qué pasa si la empresa ya no existe o está en quiebra?",
+                  a: "Puedes presentar tu reclamación como acreedor laboral en el proceso de quiebra. Los trabajadores tienen preferencia sobre otros acreedores para el cobro de sus prestaciones laborales (Art. 113 LFT)."
+                },
+                {
+                  q: "Firmé un finiquito que decía 'pago total y definitivo'. ¿Puedo reclamar aún?",
+                  a: "Es más difícil, pero no imposible. Si el documento omitió prestaciones irrenunciables por ley (como vacaciones o aguinaldo), esa cláusula no tiene validez. Consulta con un abogado para evaluar tu caso específico."
+                },
+              ].map((faq, i) => (
+                <Card key={i} className="border border-gray-200">
+                  <CardContent className="pt-4 pb-4">
+                    <h3 className="font-bold text-gray-900 mb-2">{faq.q}</h3>
+                    <p className="text-gray-600 text-sm">{faq.a}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          <div className="bg-gradient-to-r from-primary to-secondary rounded-xl p-8 text-center">
+            <h2 className="text-2xl font-bold text-white mb-3">Verifica el monto correcto antes de reclamar</h2>
+            <p className="text-blue-100 mb-6">
+              Usa nuestra calculadora para saber exactamente cuánto te corresponde según la LFT. Con ese número puedes negociar con fundamento.
+            </p>
+            <a href="/" className="inline-block bg-white text-primary font-bold py-3 px-8 rounded-lg hover:bg-blue-50 transition text-lg">
+              Calcular mi Finiquito →
             </a>
           </div>
-        </section>
 
-        <div className="my-8">
-          <AdSense slot="SLOT_ARTICULO_MID" format="rectangle" />
-        </div>
-
-        <section className="mb-10">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Paso 2: Si Hay Diferencia, No Firmes Todavía
-          </h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Si tu cálculo no coincide con el finiquito que te presentan, tienes opciones:
-          </p>
-          <div className="space-y-4">
-            {[
-              {
-                titulo: "Negociación directa con la empresa",
-                desc: "Presenta tu cálculo por escrito al área de Recursos Humanos o al empleador. Señala exactamente qué conceptos están mal y cuál debería ser el monto correcto. Muchos errores son involuntarios y se corrigen en esta etapa.",
-                recomendado: true,
-              },
-              {
-                titulo: "Firma bajo protesta",
-                desc: "Si la empresa presiona para que firmes de inmediato, puedes hacerlo agregando de tu puño y letra 'Firmo bajo protesta por no estar de acuerdo con los montos' y tu nombre. Esto no invalida tu derecho a reclamar después.",
-                recomendado: false,
-              },
-              {
-                titulo: "No firmes y ve a conciliación",
-                desc: "Si no llegamos a acuerdo, el siguiente paso es acudir al Centro Federal de Conciliación y Registro Laboral (CFCRL) para iniciar el proceso de conciliación, que es gratuito y obligatorio antes de un juicio.",
-                recomendado: false,
-              },
-            ].map((op, i) => (
-              <div key={i} className={`border rounded-xl p-5 ${op.recomendado ? "border-green-300 bg-green-50" : "border-gray-200 bg-gray-50"}`}>
-                <div className="flex items-start gap-3">
-                  {op.recomendado && <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded flex-shrink-0">RECOMENDADO PRIMERO</span>}
-                </div>
-                <h3 className="font-bold text-gray-900 mt-2 mb-2">{op.titulo}</h3>
-                <p className="text-gray-700 text-sm leading-relaxed">{op.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Paso 3: Proceso de Conciliación y Demanda Laboral
-          </h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Si la negociación directa no funciona, el proceso formal tiene dos etapas:
-          </p>
-          <div className="space-y-6">
-            <div className="bg-blue-50 rounded-xl p-6">
-              <h3 className="font-bold text-blue-900 text-lg mb-3">📋 Conciliación (obligatoria y gratuita)</h3>
-              <p className="text-blue-800 text-sm mb-3">
-                Presentas tu caso ante el CFCRL. Un conciliador trabaja con ambas partes para llegar
-                a un acuerdo. El proceso dura máximo 45 días. Si llegan a un acuerdo, tiene validez
-                legal definitiva. Si no, recibes un Constancia de No Conciliación para ir a juicio.
-              </p>
-              <p className="text-blue-800 text-sm">
-                <strong>Cómo iniciar:</strong> Entra a{" "}
-                <a href="https://www.cfcrl.gob.mx" target="_blank" rel="noopener noreferrer" className="underline">
-                  cfcrl.gob.mx
-                </a>{" "}
-                o acude a su oficina más cercana.
-              </p>
-            </div>
-            <div className="bg-purple-50 rounded-xl p-6">
-              <h3 className="font-bold text-purple-900 text-lg mb-3">⚖️ Demanda ante el Tribunal Laboral</h3>
-              <p className="text-purple-800 text-sm">
-                Si la conciliación falla, puedes presentar una demanda. El juicio dura entre 6 y 18
-                meses en promedio. Si ganas, la empresa debe pagar el finiquito correcto más intereses
-                del 9% anual desde la fecha en que debió pagarse. Puedes contratar un abogado o ir
-                por tu cuenta (es posible, pero se recomienda asesoría).
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            ¿Ya Firmé el Finiquito, Puedo Reclamar Todavía?
-          </h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Depende de lo que firmaste. Si el documento dice "recibo a mi entera satisfacción" y no
-            anotaste ninguna protesta, es más difícil pero no imposible. Hay casos en que se ha podido
-            demostrar que el trabajador firmó bajo presión, con intimidación, o sin tiempo para revisar.
-          </p>
-          <p className="text-gray-700 leading-relaxed">
-            El plazo para presentar una demanda laboral es de <strong>2 años</strong> a partir de la
-            fecha en que terminó la relación laboral (artículo 516 LFT). Consulta con un abogado
-            laboralista para evaluar tu caso específico.
-          </p>
-        </section>
-
-        <div className="my-8">
-          <AdSense slot="SLOT_ARTICULO_BOT" format="horizontal" />
-        </div>
-
-        <div className="bg-gradient-to-r from-orange-600 to-amber-600 rounded-xl p-8 text-center mt-10">
-          <h2 className="text-2xl font-bold text-white mb-3">Verifica cuánto te corresponde</h2>
-          <p className="text-orange-100 mb-6">
-            Calcula tu finiquito correcto antes de aceptar lo que te ofrece la empresa.
-          </p>
-          <a href="/" className="inline-block bg-white text-orange-700 font-bold py-3 px-8 rounded-lg hover:bg-orange-50 transition text-lg">
-            Calcular mi Finiquito →
-          </a>
         </div>
       </article>
     </div>

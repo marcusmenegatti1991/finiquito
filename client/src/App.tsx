@@ -21,6 +21,11 @@ import MejoresTarjetasSinEmpleo from "./pages/blog/MejoresTarjetasSinEmpleo";
 import CuantoTiempoPagarFiniquito from "./pages/blog/CuantoTiempoPagarFiniquito";
 import FiniquitoConEmbarazo from "./pages/blog/FiniquitoConEmbarazo";
 import ComoImpugnarFiniquitoIncorrecto from "./pages/blog/ComoImpugnarFiniquitoIncorrecto";
+import CartaDeRenuncia from "./pages/blog/CartaDeRenuncia";
+import FiniquitoYSeguroSocial from "./pages/blog/FiniquitoYSeguroSocial";
+import DespidoDuranteIncapacidad from "./pages/blog/DespidoDuranteIncapacidad";
+import ActaAdministrativa from "./pages/blog/ActaAdministrativa";
+
 
 function Router() {
   return (
@@ -42,16 +47,28 @@ function Router() {
       <Route path={"/blog/cuanto-tiempo-para-pagar-finiquito"} component={CuantoTiempoPagarFiniquito} />
       <Route path={"/blog/finiquito-con-embarazo"} component={FiniquitoConEmbarazo} />
       <Route path={"/blog/como-impugnar-finiquito-incorrecto"} component={ComoImpugnarFiniquitoIncorrecto} />
+      <Route path={"/blog/carta-de-renuncia-mexico"} component={CartaDeRenuncia} />
+      <Route path={"/blog/finiquito-y-seguro-social-imss"} component={FiniquitoYSeguroSocial} />
+      <Route path={"/blog/despido-durante-incapacidad"} component={DespidoDuranteIncapacidad} />
+      <Route path={"/blog/acta-administrativa-finiquito"} component={ActaAdministrativa} />
       <Route path={"/404"} component={NotFound} />
+      {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
   );
 }
 
+// NOTE: About Theme
+// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
+//   to keep consistent foreground/background color across components
+// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
+
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="light">
+      <ThemeProvider
+        defaultTheme="light"
+      >
         <TooltipProvider>
           <Toaster />
           <Router />
