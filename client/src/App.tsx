@@ -1,9 +1,11 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { useEffect } from "react";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { initAnalytics, trackPageView } from "./lib/analytics";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -63,6 +65,22 @@ function Router() {
 //   to keep consistent foreground/background color across components
 // - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
 
+// Inicializa GA4 y reporta un page_view en cada cambio de ruta (SPA).
+// No renderiza nada; no-op si no hay VITE_GA_ID configurado.
+function Analytics() {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    initAnalytics();
+  }, []);
+
+  useEffect(() => {
+    trackPageView(location);
+  }, [location]);
+
+  return null;
+}
+
 function App() {
   return (
     <ErrorBoundary>
@@ -70,6 +88,7 @@ function App() {
         defaultTheme="light"
       >
         <TooltipProvider>
+          <Analytics />
           <Toaster />
           <Router />
         </TooltipProvider>
