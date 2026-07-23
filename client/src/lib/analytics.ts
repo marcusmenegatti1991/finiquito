@@ -1,20 +1,17 @@
 /**
  * Google Analytics 4 — medición de tráfico y valor por visita.
  *
- * Se activa SOLO si defines la variable de entorno `VITE_GA_ID` con tu
- * Measurement ID (formato "G-XXXXXXXXXX"). Sin ella, todo es no-op: seguro en
- * desarrollo y no rompe nada si aún no creaste la propiedad de GA4.
- *
- * Dónde ponerla:
- *   - Local:      client/.env.local  →  VITE_GA_ID=G-XXXXXXXXXX
- *   - Producción: Cloudflare Pages → Settings → Environment variables
+ * ID de medición integrado por defecto (el de finiquito.xyz). El Measurement ID
+ * de GA4 es público por diseño (va en el HTML de todo sitio con Analytics), así
+ * que no es un secreto. Se puede sobreescribir con la env `VITE_GA_ID` en
+ * Cloudflare Pages (Settings → Environment variables) si algún día cambia.
  *
  * Como es un SPA (wouter), GA4 no ve los cambios de ruta por sí solo: por eso
  * configuramos con send_page_view:false y enviamos page_view a mano en cada
  * navegación (ver <Analytics/> en App.tsx).
  */
 
-const GA_ID = import.meta.env.VITE_GA_ID as string | undefined;
+const GA_ID = (import.meta.env.VITE_GA_ID as string | undefined) || "G-YPN9DZH22S";
 
 declare global {
   interface Window {
