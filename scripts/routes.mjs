@@ -151,6 +151,15 @@ export const ROUTES = [
       "¿Te quedaste sin empleo? Estas tarjetas de crédito no requieren comprobante de ingresos. Mantén tu historial crediticio mientras buscas trabajo.",
   },
   {
+    path: "/blog/cursos-para-generar-ingresos",
+    canonical: "/blog/cursos-para-generar-ingresos",
+    type: "article",
+    datePublished: "2026-07-23",
+    title: "Cómo Generar Ingresos por tu Cuenta tras un Despido: Oficios y Cursos 2026",
+    description:
+      "Perdiste tu empleo y quieres generar ingresos sin depender de otro trabajo. Oficios y cursos con demanda para empezar por tu cuenta o desde casa en México, paso a paso.",
+  },
+  {
     path: "/blog/cuanto-tiempo-para-pagar-finiquito",
     canonical: "/blog/cuanto-tiempo-para-pagar-finiquito",
     type: "article",

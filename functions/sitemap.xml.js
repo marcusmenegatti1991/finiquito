@@ -22,6 +22,7 @@ export async function onRequest() {
   <url><loc>https://finiquito.xyz/blog/finiquito-y-seguro-social-imss</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://finiquito.xyz/blog/despido-durante-incapacidad</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://finiquito.xyz/blog/acta-administrativa-finiquito</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://finiquito.xyz/blog/cursos-para-generar-ingresos</loc><lastmod>2026-07-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 </urlset>`;
 
   return new Response(sitemap, {

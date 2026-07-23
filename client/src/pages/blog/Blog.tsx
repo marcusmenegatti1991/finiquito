@@ -93,6 +93,16 @@ const articulos = [
     color: "border-l-slate-600",
   },
   {
+    slug: "/blog/cursos-para-generar-ingresos",
+    emoji: "🚀",
+    categoria: "Reinvención Laboral",
+    titulo: "Cómo Generar Ingresos por tu Cuenta tras un Despido: Oficios y Cursos 2026",
+    descripcion:
+      "Sin empleo no es solo buscar otro. Oficios y cursos con demanda para generar ingresos por tu cuenta o desde casa, usando tu finiquito como colchón.",
+    tiempo: "7 min",
+    color: "border-l-emerald-500",
+  },
+  {
     slug: "/blog/cuanto-tiempo-para-pagar-finiquito",
     emoji: "⏰",
     categoria: "Derechos Laborales",

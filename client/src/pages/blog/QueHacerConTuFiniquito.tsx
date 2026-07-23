@@ -5,6 +5,7 @@
 
 import { useSEO } from "@/hooks/useSEO";
 import AdSense from "@/components/AdSense";
+import AfiliadoCard from "@/components/AfiliadoCard";
 
 export default function QueHacerConTuFiniquito() {
   useSEO({
@@ -68,6 +69,12 @@ export default function QueHacerConTuFiniquito() {
               <li><strong>Hey Banco</strong> — Cuenta de ahorro digital sin comisiones. <a href="https://www.heybanco.com" target="_blank" rel="noopener noreferrer" className="underline">heybanco.com</a></li>
             </ul>
           </div>
+
+          <p className="text-gray-700 leading-relaxed mb-4">
+            ¿Sientes que nunca te alcanza para ahorrar? Este curso te enseña a ordenar tus gastos y
+            empezar a ahorrar aunque el presupuesto esté apretado — justo cuando más lo necesitas:
+          </p>
+          <AfiliadoCard id="hotmart-ahorrar" />
         </section>
 
         <section className="mb-10">

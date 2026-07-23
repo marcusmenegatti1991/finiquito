@@ -27,6 +27,7 @@ import CartaDeRenuncia from "./pages/blog/CartaDeRenuncia";
 import FiniquitoYSeguroSocial from "./pages/blog/FiniquitoYSeguroSocial";
 import DespidoDuranteIncapacidad from "./pages/blog/DespidoDuranteIncapacidad";
 import ActaAdministrativa from "./pages/blog/ActaAdministrativa";
+import CursosIngresos from "./pages/blog/CursosIngresos";
 
 
 function Router() {
@@ -53,6 +54,7 @@ function Router() {
       <Route path={"/blog/finiquito-y-seguro-social-imss"} component={FiniquitoYSeguroSocial} />
       <Route path={"/blog/despido-durante-incapacidad"} component={DespidoDuranteIncapacidad} />
       <Route path={"/blog/acta-administrativa-finiquito"} component={ActaAdministrativa} />
+      <Route path={"/blog/cursos-para-generar-ingresos"} component={CursosIngresos} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
