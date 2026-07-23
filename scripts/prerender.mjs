@@ -84,8 +84,11 @@ function renderRoute(route) {
 
 function outPathFor(canonical) {
   if (canonical === "/") return path.join(DIST, "index.html");
-  // "/blog/foo" → dist/public/blog/foo/index.html  (URLs limpias en Cloudflare Pages)
-  return path.join(DIST, canonical.replace(/^\//, ""), "index.html");
+  // "/blog/foo" → dist/public/blog/foo.html  (archivo PLANO, no carpeta)
+  // Cloudflare Pages sirve /blog/foo (sin slash) desde foo.html con 200 y SIN
+  // redirect 308. Con foo/index.html en cambio redirige /blog/foo → /blog/foo/,
+  // lo que rompería la consistencia con los canonical/enlaces/sitemap (sin slash).
+  return path.join(DIST, canonical.replace(/^\//, "") + ".html");
 }
 
 // ── genera un index.html por ruta ────────────────────────────────────────────
