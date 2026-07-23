@@ -12,7 +12,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AlertCircle, Download, Share2, Info, RotateCcw } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import AdSense from "@/components/AdSense";
 import {
   calcularFiniquito,
   calcularDiasVacacionesLFT,
@@ -214,11 +213,6 @@ export default function CalculadoraFiniquito() {
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-primary mb-2">Calculadora de Finiquito</h1>
-        <p className="text-lg text-gray-600">Calcula tu finiquito según la Ley Federal del Trabajo de México</p>
-      </div>
-
       <Alert className="mb-8 border-blue-200 bg-blue-50">
         <AlertCircle className="h-4 w-4 text-blue-600" />
         <AlertDescription className="text-blue-800">
@@ -376,7 +370,6 @@ export default function CalculadoraFiniquito() {
               </div>
             </CardContent>
           </Card>
-          <AdSense slot="SLOT_IZQUIERDO" format="rectangle" className="my-2" />
         </div>
 
         {/* Resultados */}
@@ -449,8 +442,6 @@ export default function CalculadoraFiniquito() {
                   </Card>
                 </TabsContent>
               </Tabs>
-
-              <AdSense slot="SLOT_DERECHO" format="rectangle" className="my-2" />
             </>
           ) : (
             <Card className="border-2 border-dashed">
